@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		B538A74A26FCEF08007B061C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538A74926FCEF08007B061C /* AppDelegate.swift */; };
 		B538A74C26FCEF08007B061C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538A74B26FCEF08007B061C /* SceneDelegate.swift */; };
-		B538A74E26FCEF08007B061C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538A74D26FCEF08007B061C /* ViewController.swift */; };
 		B538A75126FCEF08007B061C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B538A74F26FCEF08007B061C /* Main.storyboard */; };
 		B538A75326FCEF09007B061C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B538A75226FCEF09007B061C /* Assets.xcassets */; };
 		B538A75626FCEF09007B061C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B538A75426FCEF09007B061C /* LaunchScreen.storyboard */; };
+		B538A75E26FCF146007B061C /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538A75D26FCF146007B061C /* MainCollectionViewController.swift */; };
+		B538A76026FCF1C0007B061C /* UserActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538A75F26FCF1C0007B061C /* UserActionCell.swift */; };
+		B538A76226FCF5F7007B061C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538A76126FCF5F7007B061C /* ImageViewController.swift */; };
+		B538A76426FCFE33007B061C /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538A76326FCFE33007B061C /* Course.swift */; };
+		B538A76626FD06D5007B061C /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538A76526FD06D5007B061C /* CoursesViewController.swift */; };
+		B538A76826FD0828007B061C /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538A76726FD0828007B061C /* CourseCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B538A74626FCEF08007B061C /* NetWorking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetWorking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B538A74926FCEF08007B061C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B538A74B26FCEF08007B061C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B538A74D26FCEF08007B061C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B538A75026FCEF08007B061C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B538A75226FCEF09007B061C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B538A75526FCEF09007B061C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B538A75726FCEF09007B061C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B538A75D26FCF146007B061C /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
+		B538A75F26FCF1C0007B061C /* UserActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActionCell.swift; sourceTree = "<group>"; };
+		B538A76126FCF5F7007B061C /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		B538A76326FCFE33007B061C /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		B538A76526FD06D5007B061C /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
+		B538A76726FD0828007B061C /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,60 @@
 		B538A74826FCEF08007B061C /* NetWorking */ = {
 			isa = PBXGroup;
 			children = (
-				B538A74926FCEF08007B061C /* AppDelegate.swift */,
-				B538A74B26FCEF08007B061C /* SceneDelegate.swift */,
-				B538A74D26FCEF08007B061C /* ViewController.swift */,
-				B538A74F26FCEF08007B061C /* Main.storyboard */,
+				B538A76C26FDD63B007B061C /* Models */,
+				B538A76B26FDD62C007B061C /* ViewControllers */,
+				B538A76D26FDD64A007B061C /* Cell */,
+				B538A76926FDD5D7007B061C /* Storyboards */,
+				B538A76A26FDD5FB007B061C /* App */,
 				B538A75226FCEF09007B061C /* Assets.xcassets */,
-				B538A75426FCEF09007B061C /* LaunchScreen.storyboard */,
-				B538A75726FCEF09007B061C /* Info.plist */,
 			);
 			path = NetWorking;
+			sourceTree = "<group>";
+		};
+		B538A76926FDD5D7007B061C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B538A74F26FCEF08007B061C /* Main.storyboard */,
+				B538A75426FCEF09007B061C /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		B538A76A26FDD5FB007B061C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B538A74926FCEF08007B061C /* AppDelegate.swift */,
+				B538A74B26FCEF08007B061C /* SceneDelegate.swift */,
+				B538A75726FCEF09007B061C /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B538A76B26FDD62C007B061C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B538A75D26FCF146007B061C /* MainCollectionViewController.swift */,
+				B538A76126FCF5F7007B061C /* ImageViewController.swift */,
+				B538A76526FD06D5007B061C /* CoursesViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B538A76C26FDD63B007B061C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B538A76326FCFE33007B061C /* Course.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B538A76D26FDD64A007B061C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B538A75F26FCF1C0007B061C /* UserActionCell.swift */,
+				B538A76726FD0828007B061C /* CourseCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +192,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B538A74E26FCEF08007B061C /* ViewController.swift in Sources */,
+				B538A76426FCFE33007B061C /* Course.swift in Sources */,
+				B538A76626FD06D5007B061C /* CoursesViewController.swift in Sources */,
+				B538A76026FCF1C0007B061C /* UserActionCell.swift in Sources */,
 				B538A74A26FCEF08007B061C /* AppDelegate.swift in Sources */,
+				B538A76826FD0828007B061C /* CourseCell.swift in Sources */,
+				B538A76226FCF5F7007B061C /* ImageViewController.swift in Sources */,
+				B538A75E26FCF146007B061C /* MainCollectionViewController.swift in Sources */,
 				B538A74C26FCEF08007B061C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +348,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ANDCT3J259;
-				INFOPLIST_FILE = NetWorking/Info.plist;
+				INFOPLIST_FILE = NetWorking/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +367,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ANDCT3J259;
-				INFOPLIST_FILE = NetWorking/Info.plist;
+				INFOPLIST_FILE = NetWorking/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
