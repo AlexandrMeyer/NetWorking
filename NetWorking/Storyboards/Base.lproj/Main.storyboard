@@ -63,6 +63,9 @@
                     <connections>
                         <segue destination="e0f-VG-Hwx" kind="show" identifier="showImage" id="tMc-yu-G5M"/>
                         <segue destination="Wc7-Ve-F6u" kind="show" identifier="showCourses" id="DgY-XG-qUb"/>
+                        <segue destination="Wc7-Ve-F6u" kind="show" identifier="showCoursesV2" id="psp-tT-FNP"/>
+                        <segue destination="Wc7-Ve-F6u" kind="show" identifier="alamofireGet" id="Ke8-ab-Z7c"/>
+                        <segue destination="Wc7-Ve-F6u" kind="show" identifier="alamofirePost" id="cuX-x0-fNa"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0L-Ny-6aa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -147,7 +150,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ygj-Tw-YWG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2260.8695652173915" y="298.66071428571428"/>
+            <point key="canvasLocation" x="2419" y="295"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="imX-A5-c18">
@@ -183,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y5I-1D-CoG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2260.8695652173915" y="-419.19642857142856"/>
+            <point key="canvasLocation" x="2419" y="-419"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r2v-MH-Aum">
@@ -204,6 +207,9 @@
             <point key="canvasLocation" x="678" y="-6"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cuX-x0-fNa"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

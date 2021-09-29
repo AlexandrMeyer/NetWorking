@@ -27,11 +27,9 @@ class ImageViewController: UIViewController {
                 print(error?.localizedDescription ?? " No error description")
                 return
             }
-            
             print(response)
             
             guard let image = UIImage(data: data) else { return }
-            
             DispatchQueue.main.async {
                 self.imageView.image = image
                 self.activityIndicator.stopAnimating()

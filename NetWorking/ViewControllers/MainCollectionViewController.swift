@@ -7,14 +7,6 @@
 
 import UIKit
 
-enum Link: String {
-    case imageURL = "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg"
-    case exampleOne = "https://swiftbook.ru//wp-content/uploads/api/api_course"
-    case exampleTwo = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
-    case exampleThree = "https://swiftbook.ru//wp-content/uploads/api/api_website_description"
-    case exampleFour = "https://swiftbook.ru//wp-content/uploads/api/api_missing_or_wrong_fields"
-}
-
 enum UserAction: String, CaseIterable {
     case downloadImage = "Download Image"
     case exampleOne = "Example One"
@@ -22,6 +14,11 @@ enum UserAction: String, CaseIterable {
     case exampleThree = "Example Three"
     case exampleFour = "Example Four"
     case ourCourses = "Our Courses"
+    case ourCoursesV2 = "Capital to Lowcase"
+    case postRequestWithDict = "POST RQST with Dict"
+    case postRequestWithModel = "POST RQST with Model"
+    case alamofireGet = "Alamofire GET"
+    case alamofirePost = "Alamofire POST"
 }
 
 class MainCollectionViewController: UICollectionViewController {
@@ -45,29 +42,37 @@ class MainCollectionViewController: UICollectionViewController {
         return cell
     }
 
+    // метод позволяет узнать на какую ячейку мы нажали и сделать соответствующий переход
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let userAction = userActions[indexPath.item]
         
         switch userAction {
         case .downloadImage: performSegue(withIdentifier: "showImage", sender: nil)
-        case .exampleOne:
-            exampleOneButtonPressed()
-        case .exampleTwo:
-            exampleTwoButtonPressed()
-        case .exampleThree:
-            exampleThreeButtonPressed()
-        case .exampleFour:
-            exampleFourButtonPressed()
+        case .exampleOne: exampleOneButtonPressed()
+        case .exampleTwo: exampleTwoButtonPressed()
+        case .exampleThree: exampleThreeButtonPressed()
+        case .exampleFour: exampleFourButtonPressed()
         case .ourCourses: performSegue(withIdentifier: "showCourses", sender: nil)
+        case .ourCoursesV2: performSegue(withIdentifier: "showCoursesV2", sender: nil)
+        case .postRequestWithDict: postRequestWithDictionary()
+        case .postRequestWithModel: postRequestWithModel()
+        case .alamofireGet: performSegue(withIdentifier: "alamofireGet", sender: nil)
+        case .alamofirePost: performSegue(withIdentifier: "alamofirePost", sender: nil)
         }
     }
     
     //MARK: - Navigation
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "showCourses" {
+    if segue.identifier != "showImage" {
         guard let coursesVC = segue.destination as? CoursesViewController else { return }
-        coursesVC.fetchCourses()
+        switch segue.identifier {
+        case "showCourses": coursesVC.fetchCourses()
+        case "showCoursesV2": coursesVC.fetchCoursesV2()
+        case "alamofireGet": coursesVC.alamofireGetButtonPressed()
+        case "alamofirePost": coursesVC.alamofirePostButtonPressed()
+        default: break
+        }
     }
 }
     
@@ -102,83 +107,97 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     //MARK: - Networking
 extension MainCollectionViewController {
     private func exampleOneButtonPressed() {
-        guard let url = URL(string: Link.exampleOne.rawValue) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let course = try JSONDecoder().decode(Course.self, from: data)
-                print(course)
+        NetworkManager.shared.fetch(dataType: Course.self, from: Link.exampleOne.rawValue) { result in
+            switch result {
+            case .success(let course):
                 self.successAlert()
-            } catch let error {
-                print(error.localizedDescription)
+                print(course)
+            case .failure(let error):
+                print(error)
                 self.failedAlert()
             }
-        }.resume()
+        }
     }
     
     private func exampleTwoButtonPressed() {
-        guard let url = URL(string: Link.exampleTwo.rawValue) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let courses = try JSONDecoder().decode([Course].self, from: data)
-                print(courses)
+        NetworkManager.shared.fetch(dataType: [Course].self, from: Link.exampleTwo.rawValue) { result in
+            switch result {
+            case .success(let courses):
                 self.successAlert()
-            } catch let error {
-                print(error.localizedDescription)
+                for course in courses {
+                    print("Course \(course.name ?? "")")
+                }
+            case .failure(let error):
+                print(error)
                 self.failedAlert()
             }
-        }.resume()
+        }
     }
     
     private func exampleThreeButtonPressed() {
-        guard let url = URL(string: Link.exampleThree.rawValue) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let websiteDescription = try JSONDecoder().decode(WebsiteDescription.self, from: data)
-                print(websiteDescription)
+        NetworkManager.shared.fetch(dataType: WebsiteDescription.self, from: Link.exampleThree.rawValue) { result in
+            switch result {
+            case .success(let websiteDescription):
                 self.successAlert()
-            } catch let error {
-                print(error.localizedDescription)
+                print(websiteDescription)
+            case .failure(let error):
+                print(error)
                 self.failedAlert()
             }
-        }.resume()
+        }
     }
     
     private func exampleFourButtonPressed() {
-        guard let url = URL(string: Link.exampleFour.rawValue) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let websiteDescription = try JSONDecoder().decode(WebsiteDescription.self, from: data)
-                print(websiteDescription)
+        NetworkManager.shared.fetch(dataType: WebsiteDescription.self, from: Link.exampleFour.rawValue) { result in
+            switch result {
+            case .success(let websiteDescription):
                 self.successAlert()
-            } catch let error {
-                print(error.localizedDescription)
+                print(websiteDescription)
+            case .failure(let error):
+                print(error)
                 self.failedAlert()
             }
-        }.resume()
+        }
+    }
+    
+    private func postRequestWithDictionary() {
+        let course = [
+            "name": "Networking",
+            "imageUrl": "image url",
+            "numberOfLessons": "10",
+            "numberOfTests": "8"
+        ]
+        
+        NetworkManager.shared.postRequest(with: course, to: Link.postRequest.rawValue) { result in
+            switch result {
+            case .success(let course):
+                self.successAlert()
+                print(course)
+            case .failure(let error):
+                self.failedAlert()
+                print(error)
+            }
+        }
+    }
+    
+    private func postRequestWithModel() {
+        let course = CourseV3(
+            name: "Networking",
+            imageUrl: Link.courseImageURL.rawValue,
+            numberOfLessons: "10",
+            numberOfTests: "5"
+        )
+        
+        NetworkManager.shared.postRequest(with: course, to: Link.postRequest.rawValue) { result in
+            switch result {
+            case .success(let course):
+                self.successAlert()
+                print(course)
+            case .failure(let error):
+                self.failedAlert()
+                print(error)
+            }
+        }
     }
 }
 

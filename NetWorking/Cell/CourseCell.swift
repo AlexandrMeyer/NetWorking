@@ -17,14 +17,28 @@ class CourseCell: UITableViewCell {
     
     func configure(with course: Course) {
         courseNameLabel.text = course.name
-        numberOfLessons.text = "Number of lessons: \(course.number_of_lessons ?? 0)"
-        numberOfTests.text = "Number of tests: \(course.number_of_tests ?? 0)"
+        numberOfLessons.text = "Number of lessons: \(course.numberOfLessons ?? 0)"
+        numberOfTests.text = "Number of tests: \(course.numberOfTests ?? 0)"
         DispatchQueue.global().async {
             guard let url = URL(string: course.imageUrl ?? "") else { return }
             guard let imageData = try? Data(contentsOf: url) else { return }
         DispatchQueue.main.async {
             self.courseImageView.image = UIImage(data: imageData)
         }
-     }
+        }
    }
+    
+    func configure(with courseV2: CourseV2) {
+        courseNameLabel.text = courseV2.name
+        numberOfLessons.text = "Number of lessons: \(courseV2.numberOfLessons ?? 0)"
+        numberOfTests.text = "Number of tests: \(courseV2.numberOfTests ?? 0)"
+        NetworkManager.shared.fetchImage(from: courseV2.imageUrl) { result in
+            switch result {
+            case .success(let imageData):
+                self.courseImageView.image = UIImage(data: imageData)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
